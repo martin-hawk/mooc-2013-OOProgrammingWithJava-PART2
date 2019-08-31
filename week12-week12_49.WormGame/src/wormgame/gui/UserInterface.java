@@ -2,7 +2,6 @@ package wormgame.gui;
 
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import wormgame.game.WormGame;
@@ -12,7 +11,6 @@ public class UserInterface implements Runnable {
     private JFrame frame;
     private WormGame game;
     private int sideLength;
-    private DrawingBoard drawingBoard;
 
     public UserInterface(WormGame game, int sideLength) {
         this.game = game;
@@ -38,15 +36,8 @@ public class UserInterface implements Runnable {
     public void createComponents(Container container) {
         // Create drawing board first which then is added into container-object.
         // After this, create keyboard listener which is added into frame-object
-        drawingBoard = new DrawingBoard(game, sideLength);
-        container.add(drawingBoard);
-
-        frame.addKeyListener(new KeyboardListener(game.getWorm()));
     }
 
-    public Updatable getUpdatable() {
-        return this.drawingBoard;
-    }
 
     public JFrame getFrame() {
         return frame;
